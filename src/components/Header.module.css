@@ -1,0 +1,20 @@
+.active-link::after {
+  content: "";
+  display: block;
+  width: 100%;
+  border-bottom: 3px solid white;
+  position: absolute;
+}
+
+.slide-anime::after {
+  content: "";
+  display: block;
+  width: 0;
+  transition: width 0.3s;
+  border-bottom: 3px solid white;
+  position: absolute;
+}
+
+.slide-anime:hover::after {
+  width: 100%;
+}
