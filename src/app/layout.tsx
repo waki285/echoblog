@@ -6,6 +6,7 @@ import { StaticHeader } from "@/components/StaticHeader";
 import { Footer } from "@/components/Footer";
 import { BackdropHeader } from "@/components/BackdropHeader";
 import { WithContext, Person, WebSite } from "schema-dts";
+import { SITE_DOMAIN } from "@/constants/site";
 
 const mPlus1p = M_PLUS_1p({
   weight: ["400", "500", "700"],
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ja_JP",
-    url: "https://suzuneu.com",
+    url: `https://${SITE_DOMAIN}`,
     siteName: "すずねーう",
     title: "すずねーう",
     description:
@@ -48,7 +49,7 @@ export const metadata: Metadata = {
     ],
     creator: "@suzuneu_discord",
   },
-  metadataBase: new URL("https://suzuneu.com"),
+  metadataBase: new URL(`https://${SITE_DOMAIN}`),
   alternates: {
     canonical: "/",
   },
@@ -69,7 +70,7 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#ef484a",
-}
+};
 
 export default function RootLayout({
   children,
@@ -79,22 +80,22 @@ export default function RootLayout({
   const person: WithContext<Person> = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "すずねーう",
-    "image": "https://suzuneu.com/suzuneu.webp",
-    "url": "https://suzuneu.com",
-    "jobTitle": "プログラマー",
-    "sameAs": ["https://twitter.com/suzuneu_discord"]
+    name: "すずねーう",
+    image: `https://${SITE_DOMAIN}/suzuneu.webp`,
+    url: `https://${SITE_DOMAIN}`,
+    jobTitle: "プログラマー",
+    sameAs: ["https://twitter.com/suzuneu_discord"],
   };
 
   const website: WithContext<WebSite> = {
     "@context": "https://schema.org",
     "@type": "WebSite",
-    "url": "https://suzuneu.com",
-    "potentialAction": {
+    url: `https://${SITE_DOMAIN}`,
+    potentialAction: {
       "@type": "SearchAction",
-      "target": "https://suzuneu.com/search?q={search_term_string}",
-      "query": "required name=search_term_string"
-    }
+      target: `https://${SITE_DOMAIN}/search?q={search_term_string}`,
+      query: "required name=search_term_string",
+    },
   };
 
   return (
@@ -103,6 +104,14 @@ export default function RootLayout({
       suppressHydrationWarning={process.env.NODE_ENV === "production"}
     >
       <body className={`${mPlus1p.className} antialiased leading-7`}>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
+        />
         <ThemeProvider
           attribute="class"
           defaultTheme="light"
@@ -113,14 +122,6 @@ export default function RootLayout({
           {children}
           <Footer />
         </ThemeProvider>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(person) }}
-        />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(website) }}
-        />
       </body>
     </html>
   );

@@ -16,9 +16,9 @@ export const H = ({ children, className, ...props }: Props) => {
     case 1:
       return <h1 className={twMerge("text-4xl mt-4 font-bold", className)} {...props}>{children}</h1>;
     case 2:
-      return <h2 className={twMerge("text-3xl mt-4 font-semibold", className)} {...props}>{children}</h2>;
+      return <h2 className={twMerge("text-3xl mt-4 mb-1 font-semibold", className)} {...props}>{children}</h2>;
     case 3:
-      return <h3 className={twMerge("text-2xl mt-4 font-medium", className)} {...props}>{children}</h3>;
+      return <h3 className={twMerge("text-2xl mt-4 mb-1 font-medium", className)} {...props}>{children}</h3>;
     case 4:
       return <h4 className={twMerge("text-xl", className)} {...props}>{children}</h4>;
     case 5:

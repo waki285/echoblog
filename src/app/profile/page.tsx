@@ -8,6 +8,8 @@ import { Toc } from "@/components/TOC";
 import { H } from "@/components/structure/H";
 import { Metadata } from "next";
 import { Article, BreadcrumbList, WithContext } from "schema-dts";
+import { ARTICLE_DEFAULT_SCHEMA, BREADCRUMB_DEFAULT_SCHEMA } from "@/constants/site";
+import { TextLink } from "@/components/TextLink";
 
 export const metadata: Metadata = {
   title: "プロフィール",
@@ -19,33 +21,19 @@ export const metadata: Metadata = {
 
 export default function Profile() {
   const article: WithContext<Article> = {
-    "@context": "https://schema.org",
-    "@type": "Article",
+    ...ARTICLE_DEFAULT_SCHEMA,
     "mainEntityOfPage": {
       "@type": "WebPage",
       "@id": "https://suzuneu.com/profile"
     },
-    "author": {
-      "@type": "Person",
-      "name": "すずねーう"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "",
-      "logo": {
-        "@type": "ImageObject",
-        "url": ""
-      }
-    },
     "headline": "プロフィール",
     "image": "https://suzuneu.com/cover/profile.webp",
-    "datePublished": "2024-12-27",
-    "dateModified": "2024-12-27"
+    "datePublished": "2024-12-27T20:31:00+09:00",
+    "dateModified": "2024-12-29T16:46:54+09:00"
   };
 
   const breadcrumb: WithContext<BreadcrumbList> = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
+    ...BREADCRUMB_DEFAULT_SCHEMA,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -73,7 +61,8 @@ export default function Profile() {
           <Toc />
           <H id="selfintro" className="mt-4">自己紹介</H>
           <Section>
-            すずねーうです。自称プログラマーです。主に Discord Bot やウェブサイト (フロントエンド/バックエンド) の開発をしています。
+            <p>すずねーうです。自称プログラマーです。主に Discord Bot やウェブサイト (フロントエンド/バックエンド) の開発をしています。</p>
+            <p>私の PGP 公開鍵を<TextLink href="/pgp">ここから取得できます。</TextLink></p>
           </Section>
           <H id="skills">スキル</H>
           <Section>
