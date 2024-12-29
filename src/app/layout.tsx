@@ -66,6 +66,13 @@ export const metadata: Metadata = {
     "フロントエンド",
     "バックエンド",
   ],
+  icons: [
+    {
+      url: "/favicon.ico",
+      sizes: "48x48",
+      type: "image/x-icon",
+    }
+  ]
 };
 
 export const viewport: Viewport = {
