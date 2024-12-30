@@ -1,5 +1,5 @@
 "use client";
-import { memo, useState } from "react";
+import { memo, useState, useCallback } from "react";
 
 export const Pre = memo(function Pre({
   children,
@@ -10,25 +10,26 @@ export const Pre = memo(function Pre({
   withCopyButton?: boolean;
   copyContent?: string;
 }) {
-  const [copiedTimeout, setCopiedTimeout] = useState<number | null>(null);
+  const [isCopied, setIsCopied] = useState(false);
+  
+  const handleCopy = useCallback(() => {
+    navigator.clipboard.writeText(copyContent || children);
+    setIsCopied(true);
+    
+    setTimeout(() => {
+      setIsCopied(false);
+    }, 2000);
+  }, [children, copyContent]);
+
   return (
     <pre className="p-3 overflow-x-auto bg-slate-200 dark:bg-slate-800 dark:text-white rounded-md relative">
       {children}
       {withCopyButton && (
         <button
-          onClick={() => {
-            navigator.clipboard.writeText(copyContent || children);
-            if (copiedTimeout) clearTimeout(copiedTimeout);
-            setCopiedTimeout(
-              setTimeout(
-                () => setCopiedTimeout(null),
-                2000
-              ) as unknown as number
-            );
-          }}
+          onClick={handleCopy}
           className="absolute top-0 right-0 p-2 text-sm text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200"
         >
-          {copiedTimeout ? "Copied!" : "Copy"}
+          {isCopied ? "Copied!" : "Copy"}
         </button>
       )}
     </pre>
