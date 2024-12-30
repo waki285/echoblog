@@ -25,7 +25,10 @@ export const metadata: Metadata = {
     locale: "ja_JP",
     url: `https://${SITE_DOMAIN}`,
     siteName: "すずねーう",
-    title: "すずねーう",
+    title: {
+      template: "%s | すずねーうのウェブサイト",
+      default: "すずねーう",
+    },
     description:
       "すずねーうの公式サイトです。今後ブログやプロダクトを公開していく予定です。",
     images: [
@@ -98,6 +101,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "WebSite",
     url: `https://${SITE_DOMAIN}`,
+    name: "すずねーう",
+    alternateName: ["すずねーうのウェブサイト", "suzuneu", "suzuneu.com"],
     potentialAction: {
       "@type": "SearchAction",
       target: `https://${SITE_DOMAIN}/search?q={search_term_string}`,

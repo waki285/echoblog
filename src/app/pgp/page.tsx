@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/pgp",
   },
+  openGraph: {
+    title: "PGP 公開鍵",
+    description: "すずねーうの PGP 公開鍵を参照できます。",
+  },
 };
 
 export default function PGP() {
@@ -197,9 +201,17 @@ jJf6oOUnzd4arBFTFE6cfFtq0ipsn0kJWILydi+yNOBrIG4fE/4olieIDnEK0V5/
           </Section>
           <H className="mb-2">キーサーバー</H>
           <Section>
-            <TextLink href="https://keys.openpgp.org/vks/v1/by-fingerprint/10BAE6A408BB881EA0088C396C257F617B640D5A">keys.openpgp.org</TextLink>
-            <TextLink href="https://keyserver.ubuntu.com/pks/lookup?search=10BAE6A408BB881EA0088C396C257F617B640D5A&fingerprint=on&op=index">keyserver.ubuntu.com</TextLink>
-            <TextLink href="https://pgp.surfnet.nl/pks/lookup?search=10BAE6A408BB881EA0088C396C257F617B640D5A&fingerprint=on&op=index">pgp.surfnet.nl</TextLink>
+            <ul className="ml-5 list-disc">
+              <li>
+                <TextLink href="https://keys.openpgp.org/vks/v1/by-fingerprint/10BAE6A408BB881EA0088C396C257F617B640D5A">keys.openpgp.org</TextLink>
+              </li>
+              <li>
+                <TextLink href="https://keyserver.ubuntu.com/pks/lookup?search=10BAE6A408BB881EA0088C396C257F617B640D5A&fingerprint=on&op=index">keyserver.ubuntu.com</TextLink>
+              </li>
+              <li>
+                <TextLink href="https://pgp.surfnet.nl/pks/lookup?search=10BAE6A408BB881EA0088C396C257F617B640D5A&fingerprint=on&op=index">pgp.surfnet.nl</TextLink>
+              </li>
+            </ul>
           </Section>
           <H className="mb-2">署名</H>
           <Section>

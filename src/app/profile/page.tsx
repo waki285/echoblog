@@ -17,6 +17,10 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/profile",
   },
+  openGraph: {
+    title: "プロフィール",
+    description: "すずねーうです。自称プログラマーです。主に Discord Bot やウェブサイト (フロントエンド/バックエンド) の開発をしています。",
+  },
 };
 
 export default function Profile() {

@@ -11,6 +11,11 @@ export const metadata: Metadata = {
   title: {
     absolute: "すずねーうのウェブサイト",
   },
+  openGraph: {
+    title: {
+      absolute: "すずねーうのウェブサイト",
+    },
+  },
 }
 
 export default function Home() {
@@ -24,6 +29,7 @@ export default function Home() {
             className="rounded-full"
             width={96}
             height={96}
+            priority
           />
           <h1 className="text-4xl font-bold">すずねーう</h1>
           <p className="text-lg text-gray-600 dark:text-gray-400">
@@ -34,7 +40,7 @@ export default function Home() {
             <GitHubButton />
             <DiscordButton />
           </div>
-          <Button variant="default" size="lg"><Link href="/profile">プロフィール</Link></Button>
+          <Button variant="default" size="lg" asChild><Link href="/profile">プロフィール</Link></Button>
         </div>
         <DownScroll className="absolute bottom-4 left-1/2 transform -translate-x-1/2" />
       </div>
