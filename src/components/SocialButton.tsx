@@ -137,9 +137,9 @@ export const DiscordButton = memo(function DiscordButton() {
   return (
     <HoverCard openDelay={1}>
       <HoverCardTrigger asChild>
-        <div aria-label="Discord">
+        <button aria-label="Discord">
           <Discord />
-        </div>
+        </button>
       </HoverCardTrigger>
       <HoverCardContent>
         <span>@suzuneu</span>
